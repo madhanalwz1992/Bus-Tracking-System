@@ -10,4 +10,10 @@
         "name": "Airport Shuttle",
         "location": "Airport Terminal",
         "status": "Inactive"
-    },
+    },{
+        "id": "B003",
+        "name": "Night Owl",
+        "location": "Central Station",
+        "status": "Active"
+    }
+]
