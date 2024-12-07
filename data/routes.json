@@ -1,0 +1,20 @@
+[
+    {
+        "id": "R001",
+        "name": "Downtown to Airport",
+        "stops": ["Downtown", "Central Station", "Airport"],
+        "distance": "25km"
+    },
+    {
+        "id": "R002",
+        "name": "City Center to Suburbs",
+        "stops": ["City Center", "Midtown", "Suburbs"],
+        "distance": "15km"
+    },
+    {
+        "id": "R003",
+        "name": "University to City Center",
+        "stops": ["University", "Central Station", "City Center"],
+        "distance": "10km"
+    }
+]
