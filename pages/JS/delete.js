@@ -10,3 +10,9 @@ const deleteRoute = (index) => {
     saveData('routes', routes);
     displayRoutes();
 };
+const deleteSchedule = (index) => {
+    const schedules = loadData('schedules');
+    schedules.splice(index, 1);
+    saveData('schedules', schedules);
+    displaySchedules();
+};
