@@ -24,3 +24,18 @@ document.getElementById('route-form')?.addEventListener('submit', (e) => {
     displayRoutes();
     e.target.reset();
 });
+document.getElementById('schedule-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const id = document.getElementById('schedule-id').value;
+    const routeId = document.getElementById('route-id').value;
+    const busId = document.getElementById('bus-id').value;
+    const departureTime = document.getElementById('departure-time').value;
+    const arrivalTime = document.getElementById('arrival-time').value;
+    const day = document.getElementById('schedule-day').value;
+
+    const schedules = loadData('schedules');
+    schedules.push({ id, routeId, busId, departureTime, arrivalTime, day });
+    saveData('schedules', schedules);
+    displaySchedules();
+    e.target.reset();
+});
