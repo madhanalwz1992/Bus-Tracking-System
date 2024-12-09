@@ -4,3 +4,9 @@ const deleteBus = (index) => {
     saveData('buses', buses);
     displayBuses();
 };
+const deleteRoute = (index) => {
+    const routes = loadData('routes');
+    routes.splice(index, 1);
+    saveData('routes', routes);
+    displayRoutes();
+};
