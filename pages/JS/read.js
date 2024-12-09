@@ -17,3 +17,21 @@ const displayBuses = () => {
         )
         .join('');
 };
+const displayRoutes = () => {
+    const routes = loadData('routes');
+    const routeList = document.getElementById('route-list');
+    routeList.innerHTML = routes
+        .map(
+            (route, index) => `
+            <tr>
+                <td>${route.id}</td>
+                <td>${route.name}</td>
+                <td>${route.stops.join(', ')}</td>
+                <td>${route.distance}</td>
+                <td>
+                    <button onclick="deleteRoute(${index})">Delete</button>
+                </td>
+            </tr>`
+        )
+        .join('');
+};
