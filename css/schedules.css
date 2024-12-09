@@ -147,3 +147,23 @@ td button.delete-btn:hover {
         padding: 10px 15px;
     }
 }
+@media (max-width: 480px) {
+    h1, h2 {
+        font-size: 1.3rem;
+    }
+
+    input, button {
+        font-size: 0.9rem;
+        padding: 6px;
+    }
+
+    th, td {
+        font-size: 0.8rem;
+        padding: 6px;
+    }
+
+    .submit-btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+}
