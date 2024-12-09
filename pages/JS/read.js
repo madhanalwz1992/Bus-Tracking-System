@@ -35,3 +35,24 @@ const displayRoutes = () => {
         )
         .join('');
 };
+
+const displaySchedules = () => {
+    const schedules = loadData('schedules');
+    const scheduleList = document.getElementById('schedule-list');
+    scheduleList.innerHTML = schedules
+        .map(
+            (schedule, index) => `
+            <tr>
+                <td>${schedule.id}</td>
+                <td>${schedule.routeId}</td>
+                <td>${schedule.busId}</td>
+                <td>${schedule.departureTime}</td>
+                <td>${schedule.arrivalTime}</td>
+                <td>${schedule.day}</td>
+                <td>
+                    <button onclick="deleteSchedule(${index})">Delete</button>
+                </td>
+            </tr>`
+        )
+        .join('');
+};
