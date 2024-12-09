@@ -7,3 +7,7 @@ const fetchData = async (file) => {
         return [];
     }
 };
+const saveData = (key, data) => {
+    localStorage.setItem(key, JSON.stringify(data));
+};
+
