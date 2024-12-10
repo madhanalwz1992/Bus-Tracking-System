@@ -1,0 +1,14 @@
+form {
+    background-color: #fff3cd;
+    padding: 15px;
+    border: 1px solid #ffeeba;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #ffc107;
+}
+
+button:hover {
+    background-color: #e0a800;
+}
