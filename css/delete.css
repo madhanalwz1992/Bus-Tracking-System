@@ -1,0 +1,15 @@
+table {
+    border: 1px solid #f8d7da;
+}
+
+tr:hover {
+    background-color: #f8d7da;
+}
+
+button {
+    background-color: #dc3545;
+}
+
+button:hover {
+    background-color: #c82333;
+}
