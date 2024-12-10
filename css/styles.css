@@ -48,3 +48,15 @@ h1 {
     transform: translateY(-3px);
     box-shadow: 0 4px 8px rgba(0, 123, 255, 0.6);
 }
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .navigation a {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+}
