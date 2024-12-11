@@ -111,3 +111,21 @@ async function fetchSchedules() {
         tableBody.innerHTML += row;
     });
 }
+// Add a new schedule
+async function addSchedule(event) {
+    event.preventDefault();
+
+    const busId = document.getElementById('busId').value;
+    const routeId = document.getElementById('routeId').value;
+    const departureTime = document.getElementById('departureTime').value;
+    const arrivalTime = document.getElementById('arrivalTime').value;
+
+    await fetch(`${apiUrl}/schedules`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ bus_id: busId, route_id: routeId, departure_time: departureTime, arrival_time: arrivalTime }),
+    });
+
+    document.getElementById('schedule-form').reset();
+    fetchSchedules();
+}
