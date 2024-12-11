@@ -83,3 +83,8 @@ async function addRoute(event) {
     document.getElementById('route-form').reset();
     fetchRoutes();
 }
+// Delete a route
+async function deleteRoute(id) {
+    await fetch(`${apiUrl}/routes/${id}`, { method: 'DELETE' });
+    fetchRoutes();
+}
