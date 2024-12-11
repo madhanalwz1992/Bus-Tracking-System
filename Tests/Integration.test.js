@@ -36,3 +36,11 @@ app.post('/buses', (req, res) => {
       res.status(200).json(rows);
     });
   });
+  app.delete('/buses/:id', (req, res) => {
+    const { id } = req.params;
+    const query = 'DELETE FROM buses WHERE id = ?';
+    db.run(query, [id], function (err) {
+      if (err) return res.status(500).send(err);
+      res.status(200).send({ message: 'Bus deleted successfully' });
+    });
+  });
