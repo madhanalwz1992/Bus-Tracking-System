@@ -54,3 +54,9 @@ describe('Bus API Integration Tests', () => {
       expect(response.status).toBe(201);
       expect(response.body.message).toBe('Bus added successfully');
     });
+    
+    test('GET /buses - should fetch all buses', async () => {
+        const response = await request(app).get('/buses');
+        expect(response.status).toBe(200);
+        expect(response.body.length).toBeGreaterThan(0);
+      });
