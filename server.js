@@ -109,3 +109,12 @@ app.put('/routes/:id', (req, res) => {
         res.status(200).send({ message: 'Route updated successfully' });
     });
 });
+// Delete a route
+app.delete('/routes/:id', (req, res) => {
+    const { id } = req.params;
+    const query = 'DELETE FROM routes WHERE id = ?';
+    db.run(query, [id], function (err) {
+        if (err) return res.status(500).send(err);
+        res.status(200).send({ message: 'Route deleted successfully' });
+    });
+});
