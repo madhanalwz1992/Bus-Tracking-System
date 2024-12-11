@@ -66,3 +66,20 @@ async function fetchRoutes() {
         tableBody.innerHTML += row;
     });
 }
+// Add a new route
+async function addRoute(event) {
+    event.preventDefault();
+
+    const routeName = document.getElementById('routeName').value;
+    const startLocation = document.getElementById('startLocation').value;
+    const endLocation = document.getElementById('endLocation').value;
+
+    await fetch(`${apiUrl}/routes`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ route_name: routeName, start_location: startLocation, end_location: endLocation }),
+    });
+
+    document.getElementById('route-form').reset();
+    fetchRoutes();
+}
