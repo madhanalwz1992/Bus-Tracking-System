@@ -91,3 +91,11 @@ app.post('/routes', (req, res) => {
         res.status(201).send({ message: 'Route added successfully', id: this.lastID });
     });
 });
+// Get all routes
+app.get('/routes', (req, res) => {
+    const query = 'SELECT * FROM routes';
+    db.all(query, (err, rows) => {
+        if (err) return res.status(500).send(err);
+        res.status(200).json(rows);
+    });
+});
