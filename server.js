@@ -99,3 +99,13 @@ app.get('/routes', (req, res) => {
         res.status(200).json(rows);
     });
 });
+// Update a route
+app.put('/routes/:id', (req, res) => {
+    const { id } = req.params;
+    const { route_name, start_location, end_location } = req.body;
+    const query = 'UPDATE routes SET route_name = ?, start_location = ?, end_location = ? WHERE id = ?';
+    db.run(query, [route_name, start_location, end_location, id], function (err) {
+        if (err) return res.status(500).send(err);
+        res.status(200).send({ message: 'Route updated successfully' });
+    });
+});
