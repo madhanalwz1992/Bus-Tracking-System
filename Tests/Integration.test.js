@@ -44,3 +44,13 @@ app.post('/buses', (req, res) => {
       res.status(200).send({ message: 'Bus deleted successfully' });
     });
   });
+
+  // Integration Tests
+describe('Bus API Integration Tests', () => {
+    test('POST /buses - should add a bus', async () => {
+      const response = await request(app)
+        .post('/buses')
+        .send({ bus_number: 'BUS101', capacity: 50, current_location: 'Depot A' });
+      expect(response.status).toBe(201);
+      expect(response.body.message).toBe('Bus added successfully');
+    });
