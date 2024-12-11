@@ -22,3 +22,20 @@ async function fetchBuses() {
         tableBody.innerHTML += row;
     });
 }
+// Add a new bus
+async function addBus(event) {
+    event.preventDefault();
+
+    const busNumber = document.getElementById('busNumber').value;
+    const capacity = document.getElementById('capacity').value;
+    const currentLocation = document.getElementById('currentLocation').value;
+
+    await fetch(`${apiUrl}/buses`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ bus_number: busNumber, capacity, current_location: currentLocation }),
+    });
+
+    document.getElementById('bus-form').reset();
+    fetchBuses();
+}
