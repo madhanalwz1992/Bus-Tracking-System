@@ -27,4 +27,11 @@ describe('Bus CRUD Operations', () => {
         done();
       });
     });
-  
+    test('should fetch all buses from the database', (done) => {
+        db.all('SELECT * FROM buses', (err, rows) => {
+          expect(err).toBeNull();
+          expect(rows.length).toBeGreaterThan(0);
+          done();
+        });
+      });
+    
