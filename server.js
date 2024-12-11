@@ -118,3 +118,12 @@ app.delete('/routes/:id', (req, res) => {
         res.status(200).send({ message: 'Route deleted successfully' });
     });
 });
+// Add a new schedule
+app.post('/schedules', (req, res) => {
+    const { bus_id, route_id, departure_time, arrival_time } = req.body;
+    const query = 'INSERT INTO schedules (bus_id, route_id, departure_time, arrival_time) VALUES (?, ?, ?, ?)';
+    db.run(query, [bus_id, route_id, departure_time, arrival_time], function (err) {
+        if (err) return res.status(500).send(err);
+        res.status(201).send({ message: 'Schedule added successfully', id: this.lastID });
+    });
+});
