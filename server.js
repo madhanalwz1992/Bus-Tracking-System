@@ -82,3 +82,12 @@ app.delete('/buses/:id', (req, res) => {
         res.status(200).send({ message: 'Bus deleted successfully' });
     });
 });
+// Add a new route
+app.post('/routes', (req, res) => {
+    const { route_name, start_location, end_location } = req.body;
+    const query = 'INSERT INTO routes (route_name, start_location, end_location) VALUES (?, ?, ?)';
+    db.run(query, [route_name, start_location, end_location], function (err) {
+        if (err) return res.status(500).send(err);
+        res.status(201).send({ message: 'Route added successfully', id: this.lastID });
+    });
+});
