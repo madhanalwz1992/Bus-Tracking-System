@@ -16,4 +16,34 @@ const db = new sqlite3.Database('./bus_system.db', (err) => {
     }
     console.log('Connected to SQLite database');
 });
+// Initialize the database
+db.run(`
+    CREATE TABLE IF NOT EXISTS buses (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        bus_number TEXT NOT NULL,
+        capacity INTEGER NOT NULL,
+        current_location TEXT NOT NULL
+    )
+`);
+
+db.run(`
+    CREATE TABLE IF NOT EXISTS routes (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        route_name TEXT NOT NULL,
+        start_location TEXT NOT NULL,
+        end_location TEXT NOT NULL
+    )
+`);
+
+db.run(`
+    CREATE TABLE IF NOT EXISTS schedules (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        bus_id INTEGER NOT NULL,
+        route_id INTEGER NOT NULL,
+        departure_time TEXT NOT NULL,
+        arrival_time TEXT NOT NULL,
+        FOREIGN KEY (bus_id) REFERENCES buses(id),
+        FOREIGN KEY (route_id) REFERENCES routes(id)
+    )
+`);
 
