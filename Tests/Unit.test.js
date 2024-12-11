@@ -34,4 +34,11 @@ describe('Bus CRUD Operations', () => {
           done();
         });
       });
-    
+      test('should update a bus in the database', (done) => {
+        const query = 'UPDATE buses SET current_location = ? WHERE bus_number = ?';
+        db.run(query, ['Station B', 'BUS001'], function (err) {
+          expect(err).toBeNull();
+          expect(this.changes).toBe(1);
+          done();
+        });
+      });
