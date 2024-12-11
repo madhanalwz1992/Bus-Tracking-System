@@ -150,3 +150,17 @@ app.put('/schedules/:id', (req, res) => {
         res.status(200).send({ message: 'Schedule updated successfully' });
     });
 });
+// Delete a schedule
+app.delete('/schedules/:id', (req, res) => {
+    const { id } = req.params;
+    const query = 'DELETE FROM schedules WHERE id = ?';
+    db.run(query, [id], function (err) {
+        if (err) return res.status(500).send(err);
+        res.status(200).send({ message: 'Schedule deleted successfully' });
+    });
+});
+
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
