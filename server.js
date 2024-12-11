@@ -63,3 +63,13 @@ app.get('/buses', (req, res) => {
         res.status(200).json(rows);
     });
 });
+// Update a bus
+app.put('/buses/:id', (req, res) => {
+    const { id } = req.params;
+    const { bus_number, capacity, current_location } = req.body;
+    const query = 'UPDATE buses SET bus_number = ?, capacity = ?, current_location = ? WHERE id = ?';
+    db.run(query, [bus_number, capacity, current_location, id], function (err) {
+        if (err) return res.status(500).send(err);
+        res.status(200).send({ message: 'Bus updated successfully' });
+    });
+});
