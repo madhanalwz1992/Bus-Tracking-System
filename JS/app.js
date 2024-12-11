@@ -44,3 +44,25 @@ async function deleteBus(id) {
     await fetch(`${apiUrl}/buses/${id}`, { method: 'DELETE' });
     fetchBuses();
 }
+// Fetch and display routes
+async function fetchRoutes() {
+    const response = await fetch(`${apiUrl}/routes`);
+    const routes = await response.json();
+
+    const tableBody = document.getElementById('routeTableBody');
+    tableBody.innerHTML = '';
+
+    routes.forEach(route => {
+        const row = `
+            <tr>
+                <td>${route.id}</td>
+                <td>${route.route_name}</td>
+                <td>${route.start_location}</td>
+                <td>${route.end_location}</td>
+                <td>
+                    <button onclick="deleteRoute(${route.id})">Delete</button>
+                </td>
+            </tr>`;
+        tableBody.innerHTML += row;
+    });
+}
