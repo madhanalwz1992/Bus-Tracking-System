@@ -127,3 +127,16 @@ app.post('/schedules', (req, res) => {
         res.status(201).send({ message: 'Schedule added successfully', id: this.lastID });
     });
 });
+// Get all schedules
+app.get('/schedules', (req, res) => {
+    const query = `
+        SELECT schedules.id, buses.bus_number, routes.route_name, schedules.departure_time, schedules.arrival_time
+        FROM schedules
+        INNER JOIN buses ON schedules.bus_id = buses.id
+        INNER JOIN routes ON schedules.route_id = routes.id
+    `;
+    db.all(query, (err, rows) => {
+        if (err) return res.status(500).send(err);
+        res.status(200).json(rows);
+    });
+});
