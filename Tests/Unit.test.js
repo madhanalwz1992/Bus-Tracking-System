@@ -17,3 +17,14 @@ beforeAll(() => {
 afterAll(() => {
   db.close();
 });
+
+describe('Bus CRUD Operations', () => {
+    test('should insert a bus into the database', (done) => {
+      const query = 'INSERT INTO buses (bus_number, capacity, current_location) VALUES (?, ?, ?)';
+      db.run(query, ['BUS001', 40, 'Station A'], function (err) {
+        expect(err).toBeNull();
+        expect(this.lastID).toBeGreaterThan(0);
+        done();
+      });
+    });
+  
