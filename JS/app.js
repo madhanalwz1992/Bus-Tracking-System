@@ -39,3 +39,8 @@ async function addBus(event) {
     document.getElementById('bus-form').reset();
     fetchBuses();
 }
+// Delete a bus
+async function deleteBus(id) {
+    await fetch(`${apiUrl}/buses/${id}`, { method: 'DELETE' });
+    fetchBuses();
+}
