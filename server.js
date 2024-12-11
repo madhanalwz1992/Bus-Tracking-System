@@ -140,3 +140,13 @@ app.get('/schedules', (req, res) => {
         res.status(200).json(rows);
     });
 });
+// Update a schedule
+app.put('/schedules/:id', (req, res) => {
+    const { id } = req.params;
+    const { bus_id, route_id, departure_time, arrival_time } = req.body;
+    const query = 'UPDATE schedules SET bus_id = ?, route_id = ?, departure_time = ?, arrival_time = ? WHERE id = ?';
+    db.run(query, [bus_id, route_id, departure_time, arrival_time, id], function (err) {
+        if (err) return res.status(500).send(err);
+        res.status(200).send({ message: 'Schedule updated successfully' });
+    });
+});
