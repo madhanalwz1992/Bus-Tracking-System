@@ -20,3 +20,12 @@ db.serialize(() => {
     )
   `);
 });
+// Routes
+app.post('/buses', (req, res) => {
+    const { bus_number, capacity, current_location } = req.body;
+    const query = 'INSERT INTO buses (bus_number, capacity, current_location) VALUES (?, ?, ?)';
+    db.run(query, [bus_number, capacity, current_location], function (err) {
+      if (err) return res.status(500).send(err);
+      res.status(201).send({ message: 'Bus added successfully', id: this.lastID });
+    });
+  });
