@@ -29,3 +29,10 @@ app.post('/buses', (req, res) => {
       res.status(201).send({ message: 'Bus added successfully', id: this.lastID });
     });
   });
+  app.get('/buses', (req, res) => {
+    const query = 'SELECT * FROM buses';
+    db.all(query, (err, rows) => {
+      if (err) return res.status(500).send(err);
+      res.status(200).json(rows);
+    });
+  });
