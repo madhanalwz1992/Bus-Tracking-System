@@ -42,3 +42,13 @@ describe('Bus CRUD Operations', () => {
           done();
         });
       });
+      test('should delete a bus from the database', (done) => {
+        const query = 'DELETE FROM buses WHERE bus_number = ?';
+        db.run(query, ['BUS001'], function (err) {
+          expect(err).toBeNull();
+          expect(this.changes).toBe(1);
+          done();
+        });
+      });
+    });
+    
