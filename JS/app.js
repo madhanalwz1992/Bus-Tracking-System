@@ -88,3 +88,26 @@ async function deleteRoute(id) {
     await fetch(`${apiUrl}/routes/${id}`, { method: 'DELETE' });
     fetchRoutes();
 }
+// Fetch and display schedules
+async function fetchSchedules() {
+    const response = await fetch(`${apiUrl}/schedules`);
+    const schedules = await response.json();
+
+    const tableBody = document.getElementById('scheduleTableBody');
+    tableBody.innerHTML = '';
+
+    schedules.forEach(schedule => {
+        const row = `
+            <tr>
+                <td>${schedule.id}</td>
+                <td>${schedule.bus_number}</td>
+                <td>${schedule.route_name}</td>
+                <td>${schedule.departure_time}</td>
+                <td>${schedule.arrival_time}</td>
+                <td>
+                    <button onclick="deleteSchedule(${schedule.id})">Delete</button>
+                </td>
+            </tr>`;
+        tableBody.innerHTML += row;
+    });
+}
