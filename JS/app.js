@@ -129,3 +129,17 @@ async function addSchedule(event) {
     document.getElementById('schedule-form').reset();
     fetchSchedules();
 }
+// Delete a schedule
+async function deleteSchedule(id) {
+    await fetch(`${apiUrl}/schedules/${id}`, { method: 'DELETE' });
+    fetchSchedules();
+}
+
+// Initialize
+document.getElementById('bus-form').addEventListener('submit', addBus);
+document.getElementById('route-form').addEventListener('submit', addRoute);
+document.getElementById('schedule-form').addEventListener('submit', addSchedule);
+
+fetchBuses();
+fetchRoutes();
+fetchSchedules();
