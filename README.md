@@ -38,7 +38,7 @@ The **Bus Tracking System** is a full-stack application designed to manage buses
 ### Steps to Install and Run
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-repo/bus-tracking-system.git
+   git clone https://github.com/madhanalwz1992/Bus-Tracking-System
    cd bus-tracking-system
    ```
 
