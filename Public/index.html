@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Tracking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Bus Tracking System</h1>
+    </header>
+
+    <main>
+        <!-- Bus Management -->
+        <section id="bus-management">
+            <h2>Buses</h2>
+            <form id="bus-form">
+                <label for="busNumber">Bus Number:</label>
+                <input type="text" id="busNumber" required>
+                <label for="capacity">Capacity:</label>
+                <input type="number" id="capacity" required>
+                <label for="currentLocation">Current Location:</label>
+                <input type="text" id="currentLocation" required>
+                <button type="submit">Add Bus</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Bus Number</th>
+                        <th>Capacity</th>
+                        <th>Current Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="busTableBody"></tbody>
+            </table>
+        </section>
+
+        <!-- Route Management -->
+        <section id="route-management">
+            <h2>Routes</h2>
+            <form id="route-form">
+                <label for="routeName">Route Name:</label>
+                <input type="text" id="routeName" required>
+                <label for="startLocation">Start Location:</label>
+                <input type="text" id="startLocation" required>
+                <label for="endLocation">End Location:</label>
+                <input type="text" id="endLocation" required>
+                <button type="submit">Add Route</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Route Name</th>
+                        <th>Start Location</th>
+                        <th>End Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="routeTableBody"></tbody>
+            </table>
+        </section>
+
+        <!-- Schedule Management -->
+        <section id="schedule-management">
+            <h2>Schedules</h2>
+            <form id="schedule-form">
+                <label for="busId">Bus ID:</label>
+                <input type="number" id="busId" required>
+                <label for="routeId">Route ID:</label>
+                <input type="number" id="routeId" required>
+                <label for="departureTime">Departure Time:</label>
+                <input type="datetime-local" id="departureTime" required>
+                <label for="arrivalTime">Arrival Time:</label>
+                <input type="datetime-local" id="arrivalTime" required>
+                <button type="submit">Add Schedule</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Bus Number</th>
+                        <th>Route Name</th>
+                        <th>Departure Time</th>
+                        <th>Arrival Time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="scheduleTableBody"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
